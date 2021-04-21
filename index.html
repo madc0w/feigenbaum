@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>Feigenbaum</title>
+		<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" />
+		<script src="main.js" charset="utf-8"></script>
+		<style>
+			body {
+				font-family: "Lato", sans-serif;
+				background-color: #002;
+				color: white;
+			}
+
+			canvas {
+				cursor: crosshair;
+			}
+
+			button {
+				cursor: pointer;
+				background-color: #fd0;
+				border-radius: 6px;
+				width: 100px;
+				margin-left: 6px;
+				margin-right: 6px;
+			}
+
+			button:hover {
+				font-weight: bold;
+			}
+
+			#controls {
+				margin-top: 12px;
+				padding: 6px;
+				border-radius: 6px;
+				border-width: 2px;
+				border-color: white;
+				border-style: solid;
+			}
+
+			#expression {
+				width: 200px;
+				border-radius: 4px;
+			}
+
+			#lambda-axis div {
+				display: inline-block;
+			}
+
+			#lambda-min {
+				text-align: left;
+				width: calc(50vw - 40px);
+			}
+
+			#lambda-max {
+				text-align: right;
+				width: calc(50vw - 20px);
+			}
+
+			#lambda {
+				text-align: center;
+				width: 20px;
+			}
+
+			#elapsed {
+				margin-left: 12px;
+			}
+
+			#message {
+				margin-left: 12px;
+				font-weight: bold;
+				background-color: red;
+				padding-left: 8px;
+				padding-right: 8px;
+				border-radius: 4px;
+			}
+
+			#instructions {
+				text-align: right;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+		</style>
+	</head>
+
+	<body onLoad="onLoad()">
+		<div id="controls">
+			x = &lambda; <input type="text" id="expression" />
+			<button id="go-button" onClick="go();">GO</button>
+			<button id="reset-button" onClick="reset();">Reset</button>
+			<span id="progress"></span>
+			<span id="elapsed"></span>
+			<span id="message" class="hidden"></span>
+			<div id="instructions">Click inside the plot to zoom in.</div>
+		</div>
+		<div id="canvas-container">
+			<canvas id="canvas" width="800" height="600" onClick="canvasClick(event)"></canvas>
+			<div id="lambda-axis">
+				<hr />
+				<div id="lambda-min"></div>
+				<div id="lambda">&lambda; </div>
+				<div id="lambda-max"> </div>
+			</div>
+		</div>
+	</body>
+
+</html>
